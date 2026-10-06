@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EventSphere | DBMS PBL - Complete Event Management System</title>
+  <title>Event Engine | Relational DBMS Management Portal</title>
   
-  <!-- Modern Fonts -->
+  <!-- Architectural & Technical Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -27,17 +27,15 @@
   <!-- Sidebar Navigation -->
   <aside class="sidebar">
     <div class="sidebar-brand">
-      <div class="brand-icon">
-        <i class="bi bi-calendar-event"></i>
-      </div>
+      <div class="brand-icon">DB</div>
       <div class="brand-info">
-        <h2>EventSphere</h2>
-        <span>DBMS PBL System</span>
+        <h2>EVENT ENGINE</h2>
+        <span>DBMS RELATIONAL SYSTEM</span>
       </div>
     </div>
 
     <div class="sidebar-nav">
-      <div class="nav-section-title">Overview</div>
+      <div class="nav-section-title">Core Modules</div>
       <a class="nav-item active" data-tab="dashboard">
         <i class="bi bi-grid-1x2"></i>
         <span>Dashboard</span>
@@ -65,16 +63,16 @@
         <span>Clubs & Categories</span>
       </a>
 
-      <div class="nav-section-title">Portals & DBMS Lab</div>
+      <div class="nav-section-title">Portals & Query Console</div>
       <a class="nav-item" data-tab="student-portal">
         <i class="bi bi-globe"></i>
         <span>Student Portal</span>
-        <span class="nav-badge">Live</span>
+        <span class="nav-badge">Public</span>
       </a>
       <a class="nav-item" data-tab="dbms-pbl">
         <i class="bi bi-diagram-3"></i>
-        <span>ER Diagram & SQL Lab</span>
-        <span class="nav-badge" style="background:var(--accent-purple-light); color:var(--accent-purple);">PBL</span>
+        <span>Schema & SQL Lab</span>
+        <span class="nav-badge">PBL</span>
       </a>
     </div>
 
@@ -82,8 +80,8 @@
       <div class="db-status-badge">
         <span class="status-dot"></span>
         <div style="flex:1;">
-          <strong style="color:#fff;">MySQL 10.4-MariaDB</strong>
-          <div style="font-size:11px; color:var(--text-dim);">Database: event_management</div>
+          <strong style="color:var(--text-main);">MariaDB 10.4</strong>
+          <div style="font-size:10.5px; color:var(--text-dim);">Database: event_management</div>
         </div>
       </div>
     </div>
@@ -94,7 +92,7 @@
     <!-- Topbar -->
     <header class="topbar">
       <div class="topbar-left">
-        <h1 class="page-title" id="currentViewTitle">Analytics & Executive Dashboard</h1>
+        <h1 class="page-title" id="currentViewTitle">System Dashboard & Analytics</h1>
       </div>
       <div class="topbar-right">
         <button class="btn btn-secondary btn-sm" onclick="openCreateRegistrationModal()">
@@ -113,61 +111,51 @@
       <!-- TAB 1: DASHBOARD -->
       <!-- ============================================== -->
       <section class="tab-pane active" id="tab-dashboard">
-        <!-- Top KPI Metrics -->
+        <!-- Top Metrics -->
         <div class="metrics-grid">
-          <div class="metric-card" style="--card-accent: var(--primary);">
+          <div class="metric-card">
             <div class="metric-top">
               <span class="metric-title">Total Events</span>
-              <div class="metric-icon-wrap" style="background:var(--primary-light); color:var(--primary);">
-                <i class="bi bi-calendar3"></i>
-              </div>
+              <div class="metric-icon-wrap"><i class="bi bi-calendar3"></i></div>
             </div>
             <div class="metric-value" id="metricTotalEvents">0</div>
-            <div class="metric-footer"><i class="bi bi-check2 text-emerald-400"></i> Active in database</div>
+            <div class="metric-footer"><i class="bi bi-check2"></i> Active database records</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: var(--accent-cyan);">
+          <div class="metric-card">
             <div class="metric-top">
               <span class="metric-title">Total Registrations</span>
-              <div class="metric-icon-wrap" style="background:var(--accent-cyan-light); color:var(--accent-cyan);">
-                <i class="bi bi-card-checklist"></i>
-              </div>
+              <div class="metric-icon-wrap"><i class="bi bi-card-checklist"></i></div>
             </div>
             <div class="metric-value" id="metricTotalRegistrations">0</div>
-            <div class="metric-footer"><i class="bi bi-arrow-up text-cyan-400"></i> Across all events</div>
+            <div class="metric-footer">Across all events</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: var(--accent-emerald);">
+          <div class="metric-card">
             <div class="metric-top">
-              <span class="metric-title">Total Participants</span>
-              <div class="metric-icon-wrap" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">
-                <i class="bi bi-people"></i>
-              </div>
+              <span class="metric-title">Enrolled Participants</span>
+              <div class="metric-icon-wrap"><i class="bi bi-people"></i></div>
             </div>
             <div class="metric-value" id="metricTotalParticipants">0</div>
-            <div class="metric-footer"><i class="bi bi-mortarboard text-emerald-400"></i> University students</div>
+            <div class="metric-footer">Registered students</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: var(--accent-amber);">
+          <div class="metric-card">
             <div class="metric-top">
               <span class="metric-title">Venues Configured</span>
-              <div class="metric-icon-wrap" style="background:var(--accent-amber-light); color:var(--accent-amber);">
-                <i class="bi bi-building"></i>
-              </div>
+              <div class="metric-icon-wrap"><i class="bi bi-building"></i></div>
             </div>
             <div class="metric-value" id="metricTotalVenues">0</div>
-            <div class="metric-footer"><i class="bi bi-geo-alt text-amber-400"></i> Campus facilities</div>
+            <div class="metric-footer">Campus facilities</div>
           </div>
 
-          <div class="metric-card" style="--card-accent: var(--accent-purple);">
+          <div class="metric-card">
             <div class="metric-top">
-              <span class="metric-title">Total Revenue Collected</span>
-              <div class="metric-icon-wrap" style="background:var(--accent-purple-light); color:var(--accent-purple);">
-                <i class="bi bi-currency-rupee"></i>
-              </div>
+              <span class="metric-title">Revenue Collected</span>
+              <div class="metric-icon-wrap"><i class="bi bi-currency-rupee"></i></div>
             </div>
             <div class="metric-value" id="metricTotalRevenue">₹0</div>
-            <div class="metric-footer"><i class="bi bi-cash-stack text-purple-400"></i> From paid tickets</div>
+            <div class="metric-footer">Paid registrations</div>
           </div>
         </div>
 
@@ -176,8 +164,8 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <h3 class="card-title"><i class="bi bi-pie-chart"></i> Events by Category</h3>
-                <p class="card-desc">Distribution of campus events across categories</p>
+                <h3 class="card-title"><i class="bi bi-pie-chart"></i> Category Distribution</h3>
+                <p class="card-desc">Event breakdown across category entities</p>
               </div>
             </div>
             <div class="chart-container">
@@ -188,8 +176,8 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <h3 class="card-title"><i class="bi bi-bar-chart"></i> Registrations & Payment Status</h3>
-                <p class="card-desc">Overview of attendance confirmations and fee collection</p>
+                <h3 class="card-title"><i class="bi bi-bar-chart"></i> Registration & Payment Metrics</h3>
+                <p class="card-desc">Attendance confirmations and fee status breakdown</p>
               </div>
             </div>
             <div class="chart-container">
@@ -199,23 +187,23 @@
         </div>
 
         <!-- Dashboard Bottom Feed -->
-        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px;">
-          <div class="card">
-            <div class="card-header">
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:20px;">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div class="card-header" style="padding:16px 20px; border-bottom:1px solid var(--border-subtle); margin:0;">
               <div>
-                <h3 class="card-title"><i class="bi bi-clock-history"></i> Recent Registrations</h3>
-                <p class="card-desc">Latest student enrolments in events</p>
+                <h3 class="card-title"><i class="bi bi-clock-history"></i> Recent Enrolment Log</h3>
+                <p class="card-desc">Latest student event registrations</p>
               </div>
-              <button class="btn btn-secondary btn-sm" onclick="switchTab('registrations')">View All</button>
+              <button class="btn btn-secondary btn-sm" onclick="switchTab('registrations')">View Log</button>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" style="border:none;">
               <table class="custom-table">
                 <thead>
                   <tr>
                     <th>Participant</th>
-                    <th>Event Enrolled</th>
+                    <th>Event</th>
                     <th>Date</th>
-                    <th>Registration</th>
+                    <th>Status</th>
                     <th>Payment</th>
                   </tr>
                 </thead>
@@ -229,8 +217,8 @@
           <div class="card">
             <div class="card-header">
               <div>
-                <h3 class="card-title"><i class="bi bi-calendar2-week"></i> Upcoming Timeline</h3>
-                <p class="card-desc">Next scheduled event sessions</p>
+                <h3 class="card-title"><i class="bi bi-calendar2-week"></i> Schedule Timeline</h3>
+                <p class="card-desc">Upcoming event allocations</p>
               </div>
               <button class="btn btn-secondary btn-sm" onclick="switchTab('venues-schedules')">Schedule</button>
             </div>
@@ -248,7 +236,7 @@
         <div class="filter-bar">
           <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" class="search-input" id="eventSearchInput" placeholder="Search events by title, description or organizer..." oninput="loadEvents()">
+            <input type="text" class="search-input" id="eventSearchInput" placeholder="Filter events by title, description or organizer..." oninput="loadEvents()">
           </div>
           <div class="filter-group">
             <select class="select-custom" id="eventCategoryFilter" onchange="loadEvents()">
@@ -261,7 +249,7 @@
               <option value="Completed">Completed</option>
               <option value="Cancelled">Cancelled</option>
             </select>
-            <div style="display:flex; gap:4px; background:rgba(255,255,255,0.04); padding:3px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+            <div style="display:flex; gap:2px; background:var(--bg-surface); padding:2px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm);">
               <button class="btn btn-secondary btn-sm active" id="btnEventsGrid" onclick="toggleEventView('grid')">
                 <i class="bi bi-grid"></i>
               </button>
@@ -287,11 +275,11 @@
         <div class="filter-bar">
           <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" class="search-input" id="regSearchInput" placeholder="Search registrations by student, email, college or event..." oninput="loadRegistrations()">
+            <input type="text" class="search-input" id="regSearchInput" placeholder="Search by participant name, email, college or event..." oninput="loadRegistrations()">
           </div>
           <div class="filter-group">
             <select class="select-custom" id="regStatusFilter" onchange="loadRegistrations()">
-              <option value="">All Reg Statuses</option>
+              <option value="">All Registration Statuses</option>
               <option value="Confirmed">Confirmed</option>
               <option value="Pending">Pending</option>
               <option value="Cancelled">Cancelled</option>
@@ -310,7 +298,7 @@
         </div>
 
         <div class="card" style="padding:0; overflow:hidden;">
-          <div class="table-responsive">
+          <div class="table-responsive" style="border:none;">
             <table class="custom-table">
               <thead>
                 <tr>
@@ -338,7 +326,7 @@
         <div class="filter-bar">
           <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" class="search-input" id="participantSearchInput" placeholder="Search students by name, email, phone or college..." oninput="loadParticipants()">
+            <input type="text" class="search-input" id="participantSearchInput" placeholder="Search by student name, email, phone or college..." oninput="loadParticipants()">
           </div>
           <button class="btn btn-primary btn-sm" onclick="openCreateParticipantModal()">
             <i class="bi bi-person-plus"></i> Add Student
@@ -346,7 +334,7 @@
         </div>
 
         <div class="card" style="padding:0; overflow:hidden;">
-          <div class="table-responsive">
+          <div class="table-responsive" style="border:none;">
             <table class="custom-table">
               <thead>
                 <tr>
@@ -371,33 +359,33 @@
       <!-- ============================================== -->
       <section class="tab-pane" id="tab-venues-schedules">
         <!-- Venues Section -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
           <div>
-            <h2 style="font-size:18px; font-weight:700; color:#fff;">Campus Venues & Facilities</h2>
-            <p style="font-size:13px; color:var(--text-dim);">Auditoriums, seminar halls, and computer labs</p>
+            <h2 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">Campus Venues & Facilities</h2>
+            <p style="font-size:12px; color:var(--text-dim);">Auditoriums, seminar halls, and computer labs</p>
           </div>
           <button class="btn btn-primary btn-sm" onclick="openCreateVenueModal()">
             <i class="bi bi-plus-lg"></i> Add Venue
           </button>
         </div>
 
-        <div id="venuesCardsContainer" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px; margin-bottom:36px;">
+        <div id="venuesCardsContainer" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:16px; margin-bottom:32px;">
           <!-- Injected by JS -->
         </div>
 
         <!-- Schedules Section -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
           <div>
-            <h2 style="font-size:18px; font-weight:700; color:#fff;">Event Schedules Timeline</h2>
-            <p style="font-size:13px; color:var(--text-dim);">Time allocations with automated collision prevention</p>
+            <h2 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">Event Schedule Allocations</h2>
+            <p style="font-size:12px; color:var(--text-dim);">Time slots with automated venue overlap conflict checks</p>
           </div>
           <button class="btn btn-secondary btn-sm" onclick="openCreateScheduleModal()">
-            <i class="bi bi-calendar-plus"></i> Add Event Schedule
+            <i class="bi bi-calendar-plus"></i> Add Schedule
           </button>
         </div>
 
         <div class="card" style="padding:0; overflow:hidden;">
-          <div class="table-responsive">
+          <div class="table-responsive" style="border:none;">
             <table class="custom-table">
               <thead>
                 <tr>
@@ -421,13 +409,13 @@
       <!-- TAB 6: ORGANIZERS & CATEGORIES -->
       <!-- ============================================== -->
       <section class="tab-pane" id="tab-organizers-categories">
-        <div style="display:grid; grid-template-columns: 3fr 2fr; gap:28px;">
+        <div style="display:grid; grid-template-columns: 3fr 2fr; gap:24px;">
           <!-- Organizers / Clubs -->
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
               <div>
-                <h2 style="font-size:18px; font-weight:700; color:#fff;">Organizers & Student Clubs</h2>
-                <p style="font-size:13px; color:var(--text-dim);">Host entities managing campus activities</p>
+                <h2 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">Organizing Entities & Clubs</h2>
+                <p style="font-size:12px; color:var(--text-dim);">Host entities managing campus activities</p>
               </div>
               <button class="btn btn-primary btn-sm" onclick="openCreateOrganizerModal()">
                 <i class="bi bi-plus-lg"></i> Add Club
@@ -435,12 +423,12 @@
             </div>
 
             <div class="card" style="padding:0; overflow:hidden;">
-              <div class="table-responsive">
+              <div class="table-responsive" style="border:none;">
                 <table class="custom-table">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Club / Organizer</th>
+                      <th>Organizer Name</th>
                       <th>Department</th>
                       <th>Phone</th>
                       <th>Events Hosted</th>
@@ -457,17 +445,17 @@
 
           <!-- Categories -->
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
               <div>
-                <h2 style="font-size:18px; font-weight:700; color:#fff;">Event Categories</h2>
-                <p style="font-size:13px; color:var(--text-dim);">Classification taxonomy</p>
+                <h2 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">Event Categories</h2>
+                <p style="font-size:12px; color:var(--text-dim);">Classification taxonomy</p>
               </div>
               <button class="btn btn-secondary btn-sm" onclick="openCreateCategoryModal()">
                 <i class="bi bi-plus-lg"></i> Add Category
               </button>
             </div>
 
-            <div id="categoriesGridContainer" style="display:flex; flex-direction:column; gap:16px;">
+            <div id="categoriesGridContainer" style="display:flex; flex-direction:column; gap:12px;">
               <!-- Injected by JS -->
             </div>
           </div>
@@ -480,21 +468,18 @@
       <section class="tab-pane" id="tab-student-portal">
         <div class="public-banner">
           <div>
-            <span class="badge badge-purple mb-2" style="background:rgba(255,255,255,0.2); color:#fff;">Woxsen University Campus</span>
-            <h1>Discover & Enrol in Exciting Events</h1>
-            <p>Explore hackathons, academic seminars, sports championships, and cultural celebrations. Enrol seamlessly and secure your ticket today.</p>
-          </div>
-          <div>
-            <i class="bi bi-stars" style="font-size:70px; opacity:0.3;"></i>
+            <span class="badge badge-gray mb-2">Public Portal</span>
+            <h1>Campus Events Catalogue</h1>
+            <p>Select an upcoming event to view availability and submit your registration directly to the database.</p>
           </div>
         </div>
 
-        <div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
-          <h2 style="font-size:20px; font-weight:700; color:#fff;">Upcoming Campus Events Open for Registration</h2>
-          <span style="font-size:13px; color:var(--text-muted);">Real-time capacity tracking</span>
+        <div style="margin-bottom:16px; display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">Upcoming Campus Events</h2>
+          <span style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim);">Real-time capacity tracking</span>
         </div>
 
-        <div id="studentPortalEvents" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">
+        <div id="studentPortalEvents" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:18px;">
           <!-- Injected by JS -->
         </div>
       </section>
@@ -504,14 +489,14 @@
       <!-- ============================================== -->
       <section class="tab-pane" id="tab-dbms-pbl">
         <!-- ER Diagram Showcase -->
-        <div class="card" style="margin-bottom:28px;">
+        <div class="card" style="margin-bottom:24px;">
           <div class="card-header">
             <div>
-              <h3 class="card-title"><i class="bi bi-diagram-3-fill text-indigo-400"></i> Relational Database Schema & ER Entity Model</h3>
-              <p class="card-desc">Interactive representation of the 7 relational tables, primary keys (PK), foreign keys (FK), and 1:N cardinality relationships</p>
+              <h3 class="card-title"><i class="bi bi-diagram-3"></i> Relational Database Schema & Entity Model</h3>
+              <p class="card-desc">Mapping of 7 relational tables, primary keys (PK), foreign keys (FK), and cardinality rules</p>
             </div>
             <a href="database/event-management.sql" download class="btn btn-secondary btn-sm">
-              <i class="bi bi-download"></i> Download SQL Dump
+              <i class="bi bi-download"></i> Export SQL Schema
             </a>
           </div>
 
@@ -520,9 +505,9 @@
               
               <!-- 1. EVENT_CATEGORIES -->
               <div class="er-entity-card">
-                <div class="er-entity-header" style="background:#dc2626; color:#fff;">
+                <div class="er-entity-header">
                   <span>EVENT_CATEGORIES</span>
-                  <span style="font-size:11px; opacity:0.85;">1 : N (Events)</span>
+                  <span style="font-size:10px; color:var(--text-dim);">1 : N (Events)</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -542,9 +527,9 @@
 
               <!-- 2. ORGANIZERS -->
               <div class="er-entity-card">
-                <div class="er-entity-header" style="background:#059669; color:#fff;">
+                <div class="er-entity-header">
                   <span>ORGANIZERS</span>
-                  <span style="font-size:11px; opacity:0.85;">1 : N (Events)</span>
+                  <span style="font-size:10px; color:var(--text-dim);">1 : N (Events)</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -572,9 +557,9 @@
 
               <!-- 3. VENUES -->
               <div class="er-entity-card">
-                <div class="er-entity-header" style="background:#16a34a; color:#fff;">
+                <div class="er-entity-header">
                   <span>VENUES</span>
-                  <span style="font-size:11px; opacity:0.85;">1 : N (Schedules)</span>
+                  <span style="font-size:10px; color:var(--text-dim);">1 : N (Schedules)</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -600,11 +585,11 @@
                 </div>
               </div>
 
-              <!-- 4. EVENTS (Central Hub) -->
-              <div class="er-entity-card" style="grid-column: span 1; border-color:var(--primary);">
-                <div class="er-entity-header" style="background:#2563eb; color:#fff;">
-                  <span>EVENTS (Central)</span>
-                  <span style="font-size:11px; opacity:0.85;">Hub Entity</span>
+              <!-- 4. EVENTS (Central) -->
+              <div class="er-entity-card" style="border-color:var(--border-strong);">
+                <div class="er-entity-header" style="background:var(--bg-surface-3);">
+                  <span>EVENTS (Central Entity)</span>
+                  <span style="font-size:10px; color:var(--text-dim);">Hub</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -637,16 +622,16 @@
                   </div>
                   <div class="er-attr-row">
                     <span>status</span>
-                    <span class="er-type">CHECK constraint</span>
+                    <span class="er-type">CHECK status</span>
                   </div>
                 </div>
               </div>
 
               <!-- 5. EVENT_SCHEDULES -->
               <div class="er-entity-card">
-                <div class="er-entity-header" style="background:#d97706; color:#fff;">
+                <div class="er-entity-header">
                   <span>EVENT_SCHEDULES</span>
-                  <span style="font-size:11px; opacity:0.85;">N : 1 (Events & Venues)</span>
+                  <span style="font-size:10px; color:var(--text-dim);">N : 1 (Events & Venues)</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -655,7 +640,7 @@
                   </div>
                   <div class="er-attr-row">
                     <span class="er-fk">event_id (FK)</span>
-                    <span class="er-type">ON DELETE CASCADE</span>
+                    <span class="er-type">CASCADE</span>
                   </div>
                   <div class="er-attr-row">
                     <span class="er-fk">venue_id (FK)</span>
@@ -678,9 +663,9 @@
 
               <!-- 6. PARTICIPANTS -->
               <div class="er-entity-card">
-                <div class="er-entity-header" style="background:#059669; color:#fff;">
+                <div class="er-entity-header">
                   <span>PARTICIPANTS</span>
-                  <span style="font-size:11px; opacity:0.85;">1 : N (Registrations)</span>
+                  <span style="font-size:10px; color:var(--text-dim);">1 : N (Registrations)</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -708,9 +693,9 @@
 
               <!-- 7. REGISTRATIONS -->
               <div class="er-entity-card" style="grid-column: 2 / span 1;">
-                <div class="er-entity-header" style="background:#c026d3; color:#fff;">
+                <div class="er-entity-header">
                   <span>REGISTRATIONS</span>
-                  <span style="font-size:11px; opacity:0.85;">Associative Bridge</span>
+                  <span style="font-size:10px; color:var(--text-dim);">Associative Bridge</span>
                 </div>
                 <div class="er-entity-body">
                   <div class="er-attr-row">
@@ -731,14 +716,14 @@
                   </div>
                   <div class="er-attr-row">
                     <span>registration_status</span>
-                    <span class="er-type">CHECK constraint</span>
+                    <span class="er-type">CHECK status</span>
                   </div>
                   <div class="er-attr-row">
                     <span>payment_status</span>
-                    <span class="er-type">CHECK constraint</span>
+                    <span class="er-type">CHECK payment</span>
                   </div>
-                  <div class="er-attr-row" style="background:rgba(255,255,255,0.03);">
-                    <span style="color:#f59e0b; font-size:11px;">UNIQUE(event_id, participant_id)</span>
+                  <div class="er-attr-row" style="background:var(--bg-surface-2);">
+                    <span style="color:var(--text-muted); font-size:10px;">UNIQUE(event_id, participant_id)</span>
                   </div>
                 </div>
               </div>
@@ -748,12 +733,12 @@
         </div>
 
         <!-- SQL Query Playground Section -->
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:28px;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
           <!-- Left: Preset PBL Queries -->
           <div>
-            <div style="margin-bottom:16px;">
-              <h3 style="font-size:18px; font-weight:700; color:#fff;">Essential DBMS PBL Academic Queries</h3>
-              <p style="font-size:13px; color:var(--text-dim);">Click any query preset to load and execute it directly on the MariaDB engine.</p>
+            <div style="margin-bottom:14px;">
+              <h3 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">Academic SQL Query Presets</h3>
+              <p style="font-size:12px; color:var(--text-dim);">Select a query preset to populate and execute on MariaDB.</p>
             </div>
             <div id="pblPresetQueriesList">
               <!-- Injected by JS -->
@@ -762,26 +747,26 @@
 
           <!-- Right: Interactive Query Runner -->
           <div>
-            <div style="margin-bottom:16px; display:flex; justify-content:space-between; align-items:center;">
-              <h3 style="font-size:18px; font-weight:700; color:#fff;">Live MariaDB Query Console</h3>
-              <span class="badge badge-emerald"><i class="bi bi-shield-check"></i> Read-Safe Playground</span>
+            <div style="margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+              <h3 style="font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--text-main); text-transform:uppercase;">MariaDB Execution Console</h3>
+              <span class="badge badge-gray">Read-Only Safety</span>
             </div>
 
             <div class="sql-editor-wrap">
               <div class="sql-editor-toolbar">
-                <span><i class="bi bi-terminal me-1 text-cyan-400"></i> SQL Input Console</span>
+                <span><i class="bi bi-terminal me-1"></i> Query Buffer</span>
                 <button class="btn btn-primary btn-sm" onclick="executeSql()">
-                  <i class="bi bi-play-fill"></i> Execute SQL
+                  <i class="bi bi-play-fill"></i> Run Query
                 </button>
               </div>
               <textarea class="sql-textarea" id="sqlQueryInput" rows="6" placeholder="Write or select a SELECT SQL query here..."></textarea>
             </div>
 
-            <div class="card" style="padding:16px;">
-              <h4 style="font-size:14px; font-weight:600; color:#fff; margin-bottom:12px;">Query Execution Output</h4>
+            <div class="card" style="padding:14px;">
+              <h4 style="font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:10px;">Execution Result</h4>
               <div id="sqlQueryResultArea">
-                <div style="text-align:center; padding:30px; color:var(--text-dim); font-size:13px;">
-                  Select a preset query on the left or type your custom SQL query above, then press <strong>Execute SQL</strong>.
+                <div style="text-align:center; padding:24px; color:var(--text-dim); font-size:12.5px;">
+                  Select a preset query on the left or enter a custom SELECT query above, then click <strong>Run Query</strong>.
                 </div>
               </div>
             </div>
@@ -800,32 +785,28 @@
   <div class="modal-overlay" id="eventModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="eventModalTitle">Create New Event</h3>
+        <h3 class="modal-title" id="eventModalTitle">Create Event</h3>
         <button class="modal-close">&times;</button>
       </div>
       <form id="eventForm">
         <input type="hidden" id="eventFormId">
         <div class="modal-body">
           <div class="form-group">
-            <label class="form-label">Event Name *</label>
-            <input type="text" class="form-control" id="eventNameInput" required placeholder="e.g. AI Innovation Summit 2026">
+            <label class="form-label">Event Title *</label>
+            <input type="text" class="form-control" id="eventNameInput" required placeholder="AI Innovation Workshop 2026">
           </div>
           <div class="form-group">
             <label class="form-label">Description</label>
-            <textarea class="form-control" id="eventDescInput" rows="2" placeholder="Brief event overview, objectives, eligibility..."></textarea>
+            <textarea class="form-control" id="eventDescInput" rows="2" placeholder="Brief event overview..."></textarea>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Category *</label>
-              <select class="form-control" id="eventCategorySelect" required>
-                <!-- Injected -->
-              </select>
+              <select class="form-control" id="eventCategorySelect" required></select>
             </div>
             <div class="form-group">
-              <label class="form-label">Organizing Club / Dept *</label>
-              <select class="form-control" id="eventOrganizerSelect" required>
-                <!-- Injected -->
-              </select>
+              <label class="form-label">Organizing Entity *</label>
+              <select class="form-control" id="eventOrganizerSelect" required></select>
             </div>
           </div>
           <div class="form-row">
@@ -834,12 +815,12 @@
               <input type="number" step="0.01" min="0" class="form-control" id="eventFeeInput" value="0.00" required>
             </div>
             <div class="form-group">
-              <label class="form-label">Max Participants Capacity *</label>
+              <label class="form-label">Max Capacity *</label>
               <input type="number" min="1" class="form-control" id="eventMaxInput" value="100" required>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label">Event Status *</label>
+            <label class="form-label">Status *</label>
             <select class="form-control" id="eventStatusSelect">
               <option value="Upcoming">Upcoming</option>
               <option value="Ongoing">Ongoing</option>
@@ -848,15 +829,13 @@
             </select>
           </div>
 
-          <div style="margin-top:10px; padding:14px; background:rgba(0,0,0,0.25); border-radius:var(--radius-md); border:1px solid var(--border-color);">
-            <div style="font-weight:600; font-size:13px; color:var(--accent-cyan); margin-bottom:10px;">
-              <i class="bi bi-clock me-1"></i> Venue & Schedule Configuration (Optional)
+          <div style="margin-top:8px; padding:12px; background:var(--bg-surface-2); border:1px solid var(--border-subtle); border-radius:var(--radius-sm);">
+            <div style="font-family:var(--font-mono); font-weight:700; font-size:11px; color:var(--text-muted); text-transform:uppercase; margin-bottom:8px;">
+              Venue Allocation & Timing (Optional)
             </div>
             <div class="form-group mb-2">
               <label class="form-label">Assigned Venue</label>
-              <select class="form-control" id="eventVenueSelect">
-                <!-- Injected -->
-              </select>
+              <select class="form-control" id="eventVenueSelect"></select>
             </div>
             <div class="form-row">
               <div class="form-group">
@@ -884,9 +863,9 @@
 
   <!-- 2. Event Details Modal -->
   <div class="modal-overlay" id="eventDetailsModal">
-    <div class="modal-content" style="max-width:760px;">
+    <div class="modal-content" style="max-width:720px;">
       <div class="modal-header">
-        <h3 class="modal-title" id="eventDetailsTitle">Event Details</h3>
+        <h3 class="modal-title" id="eventDetailsTitle">Event Specification</h3>
         <button class="modal-close">&times;</button>
       </div>
       <div class="modal-body" id="eventDetailsBody">
@@ -902,42 +881,38 @@
   <div class="modal-overlay" id="registrationModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Register Participant to Event</h3>
+        <h3 class="modal-title">Register Participant</h3>
         <button class="modal-close">&times;</button>
       </div>
       <form id="registrationForm">
         <div class="modal-body">
           <div class="form-group">
             <label class="form-label">Target Event *</label>
-            <select class="form-control" id="regEventSelect" required>
-              <!-- Injected -->
-            </select>
+            <select class="form-control" id="regEventSelect" required></select>
           </div>
 
-          <div style="display:flex; gap:16px; margin:8px 0; font-size:13px;">
+          <div style="display:flex; gap:14px; margin:6px 0; font-size:12.5px; font-family:var(--font-mono);">
             <label style="cursor:pointer; display:flex; align-items:center; gap:6px;">
-              <input type="radio" name="participantMode" value="existing" checked onchange="toggleParticipantInputMode('existing')"> Select Existing Student
+              <input type="radio" name="participantMode" value="existing" checked onchange="toggleParticipantInputMode('existing')"> Existing Student
             </label>
             <label style="cursor:pointer; display:flex; align-items:center; gap:6px;">
-              <input type="radio" name="participantMode" value="new" onchange="toggleParticipantInputMode('new')"> Register New Student
+              <input type="radio" name="participantMode" value="new" onchange="toggleParticipantInputMode('new')"> New Student
             </label>
           </div>
 
           <!-- Existing Participant Option -->
           <div id="existingParticipantSection">
             <div class="form-group">
-              <label class="form-label">Select Registered Student *</label>
-              <select class="form-control" id="regParticipantSelect">
-                <!-- Injected -->
-              </select>
+              <label class="form-label">Student Record *</label>
+              <select class="form-control" id="regParticipantSelect"></select>
             </div>
           </div>
 
           <!-- New Participant Option -->
-          <div id="newParticipantSection" style="display:none; background:rgba(0,0,0,0.2); padding:14px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+          <div id="newParticipantSection" style="display:none; background:var(--bg-surface-2); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
             <div class="form-group mb-2">
               <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" id="regNewName" placeholder="e.g. Aditi Rao">
+              <input type="text" class="form-control" id="regNewName" placeholder="Aditi Rao">
             </div>
             <div class="form-row mb-2">
               <div class="form-group">
@@ -950,12 +925,12 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">College / University *</label>
+              <label class="form-label">College / Institution *</label>
               <input type="text" class="form-control" id="regNewCollege" value="Woxsen University">
             </div>
           </div>
 
-          <div class="form-row" style="margin-top:10px;">
+          <div class="form-row" style="margin-top:8px;">
             <div class="form-group">
               <label class="form-label">Registration Status *</label>
               <select class="form-control" id="regStatusSelect">
@@ -987,7 +962,7 @@
   <div class="modal-overlay" id="participantModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="participantModalTitle">Add Student / Participant</h3>
+        <h3 class="modal-title" id="participantModalTitle">Add Student Record</h3>
         <button class="modal-close">&times;</button>
       </div>
       <form id="participantForm">
@@ -995,7 +970,7 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="form-label">Full Name *</label>
-            <input type="text" class="form-control" id="partNameInput" required placeholder="e.g. Siddharth Joshi">
+            <input type="text" class="form-control" id="partNameInput" required placeholder="Siddharth Joshi">
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -1024,7 +999,7 @@
   <div class="modal-overlay" id="venueModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="venueModalTitle">Add Campus Venue</h3>
+        <h3 class="modal-title" id="venueModalTitle">Add Venue</h3>
         <button class="modal-close">&times;</button>
       </div>
       <form id="venueForm">
@@ -1032,11 +1007,11 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="form-label">Venue Name *</label>
-            <input type="text" class="form-control" id="venueNameInput" required placeholder="e.g. Apple Inc. Lab 3">
+            <input type="text" class="form-control" id="venueNameInput" required placeholder="Main Auditorium">
           </div>
           <div class="form-group">
-            <label class="form-label">Location / Building *</label>
-            <input type="text" class="form-control" id="venueLocationInput" required placeholder="e.g. Technology Block, 2nd Floor">
+            <label class="form-label">Location / Block *</label>
+            <input type="text" class="form-control" id="venueLocationInput" required placeholder="Academic Block A">
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -1067,7 +1042,7 @@
   <div class="modal-overlay" id="scheduleModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Schedule Event Session</h3>
+        <h3 class="modal-title">Schedule Event</h3>
         <button class="modal-close">&times;</button>
       </div>
       <form id="scheduleForm">
@@ -1115,12 +1090,12 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="form-label">Club / Organizer Name *</label>
-            <input type="text" class="form-control" id="orgNameInput" required placeholder="e.g. Robotics Club">
+            <input type="text" class="form-control" id="orgNameInput" required placeholder="Tech Club">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Official Email *</label>
-              <input type="email" class="form-control" id="orgEmailInput" required placeholder="robotics@woxsen.edu.in">
+              <input type="email" class="form-control" id="orgEmailInput" required placeholder="techclub@woxsen.edu.in">
             </div>
             <div class="form-group">
               <label class="form-label">Contact Phone</label>
@@ -1129,7 +1104,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Associated Department</label>
-            <input type="text" class="form-control" id="orgDeptInput" placeholder="e.g. Mechatronics Department">
+            <input type="text" class="form-control" id="orgDeptInput" placeholder="Computer Science">
           </div>
         </div>
         <div class="modal-footer">
@@ -1152,7 +1127,7 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="form-label">Category Name *</label>
-            <input type="text" class="form-control" id="catNameInput" required placeholder="e.g. Symposium">
+            <input type="text" class="form-control" id="catNameInput" required placeholder="Workshop">
           </div>
           <div class="form-group">
             <label class="form-label">Description</label>
@@ -1172,9 +1147,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <div>
-          <h3 class="modal-title"><i class="bi bi-ticket-detailed text-indigo-400"></i> Event Registration</h3>
-          <div style="font-size:13px; color:var(--accent-cyan); font-weight:600; margin-top:3px;" id="studentRegEventTitle">Event Title</div>
-          <div style="font-size:12px; color:var(--text-dim);" id="studentRegEventFee">Registration Fee</div>
+          <h3 class="modal-title">Event Registration</h3>
+          <div style="font-size:12.5px; color:var(--text-main); font-weight:600; margin-top:2px;" id="studentRegEventTitle">Event Title</div>
+          <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim);" id="studentRegEventFee">Registration Fee</div>
         </div>
         <button class="modal-close">&times;</button>
       </div>
@@ -1182,13 +1157,13 @@
         <input type="hidden" id="studentRegEventId">
         <div class="modal-body">
           <div class="form-group">
-            <label class="form-label">Your Full Name *</label>
-            <input type="text" class="form-control" id="studentNameInput" required placeholder="e.g. Ananey Sharma">
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-control" id="studentNameInput" required placeholder="Ananey Sharma">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">College Email *</label>
-              <input type="email" class="form-control" id="studentEmailInput" required placeholder="your.name@woxsen.edu.in">
+              <input type="email" class="form-control" id="studentEmailInput" required placeholder="ananey.sharma@woxsen.edu.in">
             </div>
             <div class="form-group">
               <label class="form-label">Contact Number *</label>
@@ -1199,13 +1174,10 @@
             <label class="form-label">College / University Name *</label>
             <input type="text" class="form-control" id="studentCollegeInput" required value="Woxsen University">
           </div>
-          <div style="font-size:12px; color:var(--text-muted); background:rgba(255,255,255,0.03); padding:10px; border-radius:var(--radius-sm);">
-            <i class="bi bi-info-circle me-1 text-cyan-400"></i> By registering, your seat will be reserved and an automated record will be created in the database.
-          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Confirm My Registration</button>
+          <button type="submit" class="btn btn-primary">Confirm Registration</button>
         </div>
       </form>
     </div>
